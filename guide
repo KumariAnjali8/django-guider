@@ -1,0 +1,73 @@
+--commands--
+    --installation--
+        pip install django
+    --start your project--
+        django-admin startproject demo
+
+    --to create django app--
+        go inside folder- here 
+            cd demo
+            python manage.py startapp myapp
+
+    --to perform migrations--
+        python manage.py makemigrations       
+
+--add--
+     myapp in installed section of settings.py
+     urls.py in myapp folder
+     template folder in myapp
+     --inside--
+        add base.html-> here we are using jinja template engine
+        create home.html
+            contains the blocks that can be dynamically changed which are defined in base.html
+
+    --to create view , and route it with url-- t 
+        import render ,HttpResponse
+        view syntax
+            def home(request):
+                #return HttpResponse("hello world")
+                return render(request,"home.html")
+        url.py(demo)->urls.py(myapp)->views.py
+
+
+
+
+    -inside demo folder--
+    --file--
+    __init.py__ ->special file that tells python to treat this directory as python package
+
+    --congiguration files that allows django to connect with web server-- 
+        asgi.py
+        wsgi.py
+    urls.py -> configure diffrent url routes that we canuse direct to diffrent django application
+    manage.py-> command line tool that allows us run commands 
+
+     --inside demo/urls.py--
+    #path wriiten inside "" include would redirect it to the urls.py in myapp
+    #for example "myapp/" in my search bar if i type myapp/home it would go fetch path -"home" in urls.py in myapp
+    #helps to have diffrent prefixes for diffrent apps while having same name for routes within an app
+
+
+    inside --myapp folder--
+        urls.py-> #to connect a url to specific path or view (config urls within our appliactions)
+        views.py-> 
+            #here views is like a function which returns a response here that would be diaplayed on the website which should be connected to our app through url and routes
+
+    django project ->contains above files and django app 
+    django application -> 
+        standalone app contains diffrent database models, views, routes ,templates  that we would see in the web app can be taken and plugged in diffrent django project 
+    
+   
+    main components of django app?
+    what are models , views ,urks here
+
+    --template--
+         reusable html file to display dynamic data
+        inside templates we have that we can modify blocks that can be used by other page 
+
+    --orm--
+        #create a db model that we access from django (it provides orm )
+            #define orm
+            #basically whatever we can write python code to create a model we create here would help us to craete a model in structural db schema like SQL
+            #this is also known as migration -automated code that create corresponding model in backend db
+        whole flow 
